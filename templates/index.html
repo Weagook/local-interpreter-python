@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ filename }}" >
+    <title>Document</title>
+</head>
+<body>
+    <!-- <h1>Онлайн Интерпретатор</h1>
+    <div class="main-containter">
+        <div class="code-container">
+            <textarea class="text-wrapper">
+                Текст
+            </textarea>
+        </div>
+        <div class="container-output">
+            Пусто.
+        </div>
+    </div> -->
+    <div>
+        <textarea id="codeInput" placeholder="Enter your Python code here"></textarea>
+        <button onclick="runCode()">Run Code</button>
+      </div>
+      <div>
+        <pre id="output"></pre>
+    </div> 
+    <script>function runCode() {
+        const code = document.getElementById("codeInput").value;
+        const xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState === XMLHttpRequest.DONE) {
+            const response = xhr.responseText;
+            document.getElementById("output").textContent = response;
+          }
+        }
+        
+        xhr.open
+        ("POST", "/api/compile-code/");
+            xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            xhr.send(JSON.stringify({ code }));
+        } </script>
+</body>
+</html>
